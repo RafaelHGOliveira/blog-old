@@ -157,7 +157,7 @@ MESSAGE_TAGS = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-try:
-    from .local_settings import *
-except:
-    pass
+# try:
+#     from .local_settings import *
+# except:
+#     pass
