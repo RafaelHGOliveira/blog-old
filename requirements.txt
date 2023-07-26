@@ -2,7 +2,7 @@ asgiref==3.7.2
 bleach==6.0.0
 Django==4.2.3
 django-summernote==0.8.20.0
-gunicorn==21.2.0
+mysqlclient==2.2.0
 packaging==23.1
 Pillow==10.0.0
 six==1.16.0
