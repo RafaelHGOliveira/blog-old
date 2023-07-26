@@ -133,7 +133,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Não fazer imports assim!!!!!!!!!!
 # Mensagens
 from django.contrib.messages import constants
-
+# Using bootstrap on messages
 MESSAGE_TAGS = {
     constants.ERROR: 'alert-danger',
     constants.WARNING: 'alert-warning',
