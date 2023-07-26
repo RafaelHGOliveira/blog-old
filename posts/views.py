@@ -44,7 +44,6 @@ class PostBusca(PostIndex):
         
         if not termo:
             return qs
-        
         qs = qs.filter(
             Q(titulo_post__icontains=termo) |
             Q(autor_post__first_name__iexact=termo) |
@@ -71,8 +70,6 @@ class PostCategoria(PostIndex):
     
 # Função Utilizando View    
 class PostDetalhes(View):
-    
-    
     # Inicializa todas as variaveis para todas as funções
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
@@ -91,7 +88,6 @@ class PostDetalhes(View):
     def get(self, request, *args, **kwargs):
        return render(request, self.template_name, self.contexto)
         
-    
     def post(self, request, *args, **kwargs):
         form = self.contexto['form']
         
@@ -108,7 +104,7 @@ class PostDetalhes(View):
         messages.success(request, 'Seu comentario foi envado para revisão')
         return redirect('post_detalhes', pk=self.kwargs.get('pk'))
         
-
+# Unused class
 # Função Utilizando UpdateView
 # class PostDetalhes(UpdateView):
 #     template_name = 'posts/post_detalhes.html'

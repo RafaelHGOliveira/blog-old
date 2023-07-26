@@ -1,8 +1,6 @@
 from django.db import models
 from categorias.models import Categoria
 from django.contrib.auth.models import User
-from PIL import Image
-from django.conf import settings
 from pathlib import Path
 
 class Post(models.Model):
@@ -20,29 +18,3 @@ class Post(models.Model):
     def __str__(self):
         return self.titulo_post
     
-    def save(self, *args, **kwargs):
-        super.save(*args, **kwargs)
-        
-        self.rezise_image(self.imagem_post, 800)
-        
-    # Função para reduzir resolução das imagens 
-    @staticmethod
-    def rezise_image(img_name, new_width):
-        img_path = Path(settings.MEDIA_ROOT, img_name)
-        img = Image.open(img_path)
-        width, height = img.size
-        # Regra de 3 para definir a altura nova da imagem
-        new_height = round((new_width * height) / width)
-        
-        # Não faz nada se a imagem tiver resolução igual ou menor a nova resolução
-        if width <= new_width:
-            img.close()
-            return
-        
-        new_img = img.resize((new_width, new_height), Image.ANTIALIAS)
-        new_img.save(
-            img_path,
-            optimize=True,
-            quality=60
-        )
-        new_img.close()
